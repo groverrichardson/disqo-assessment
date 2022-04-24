@@ -1,11 +1,13 @@
 import React from 'react';
-import Home from './components/home';
 import 'tailwindcss/tailwind.css';
+import NotepadHero from './components/notepad-hero';
 
 function App() {
     return (
-        <main className="App">
-            <Home />
+        <main className="App flex flex-col justify-center items-center">
+            <div className="app-container flex flex-col justify-center items-center">
+                <NotepadHero />
+            </div>
         </main>
     );
 }
