@@ -1,7 +1,13 @@
 import React from 'react';
+import { useContext } from 'react';
+import NoteContext from '../contexts/NoteContext';
 import Note from './note';
 
 function NotepadHero() {
+    const noteContext = useContext(NoteContext);
+    const notepadTitle = noteContext.initialState.notepadTitle;
+    console.log(noteContext);
+
     return (
         <div className="NotepadHero flex flex-col justify-center items-between w-1/2">
             <div className="title-container">
@@ -9,7 +15,13 @@ function NotepadHero() {
                 <input
                     type="text"
                     className="notepad-title-input border-2 border-gray-300 p-2 rounded-md mt-2"
-                    placeholder="My notepad title..."
+                    placeholder={notepadTitle}
+                    onChange={(e) => {
+                        noteContext.dispatch({
+                            type: 'Update Notepad',
+                            value: e.target.value,
+                        });
+                    }}
                 />
             </div>
             <form className="notes-container flex flex-col justify-center items-start">
