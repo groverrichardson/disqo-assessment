@@ -1,4 +1,5 @@
 import React from 'react';
+import Note from './note';
 
 function NotepadHero() {
     return (
@@ -29,6 +30,7 @@ function NotepadHero() {
                     Add
                 </button>
             </form>
+            <Note />
         </div>
     );
 }
