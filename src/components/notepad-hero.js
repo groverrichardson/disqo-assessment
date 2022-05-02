@@ -47,6 +47,7 @@ function NotepadHero() {
                     <Note
                         title={note.noteTitle}
                         description={note.noteDescription}
+                        key={i}
                     />
                 );
             })}
