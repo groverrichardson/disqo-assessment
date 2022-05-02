@@ -8,6 +8,8 @@ function NotepadHero() {
     const notepadTitle = noteContext.state.notepadTitle;
     const notes = noteContext.state.notes;
 
+    console.log(noteContext.notes);
+
     return (
         <div className="NotepadHero flex flex-col justify-center items-between w-1/2">
             <div className="title-container">
@@ -15,21 +17,36 @@ function NotepadHero() {
                 <input
                     type="text"
                     className="notepad-title-input border-2 border-gray-300 p-2 rounded-md mt-2"
-                    placeholder={notepadTitle}
+                    defaultValue={notepadTitle}
                     onChange={(e) => {
                         noteContext.dispatch({
-                            type: 'Update Notepad',
+                            type: 'notepad',
                             value: e.target.value,
                         });
                     }}
                 />
             </div>
-            <form className="notes-container flex flex-col justify-center items-start">
+            <form
+                className="notes-container flex flex-col justify-center items-start"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    noteContext.dispatch({
+                        type: 'addNote',
+                        title: noteContext.state.currentNoteTitle,
+                        description: noteContext.state.currentNoteDescription,
+                    });
+                }}>
                 <h2 className="my-notes ">My Notes</h2>
                 <input
                     type="text"
                     className="note-title border-2 border-gray-300 p-2 rounded-md mt-2"
                     placeholder="Enter note title..."
+                    onChange={(e) => {
+                        noteContext.dispatch({
+                            type: 'currentNoteTitle',
+                            value: e.target.value,
+                        });
+                    }}
                 />
                 <textarea
                     name="note-input"
@@ -37,8 +54,16 @@ function NotepadHero() {
                     cols="30"
                     rows="10"
                     className="border-2 border-gray-300 p-2 rounded-md mt-2"
-                    placeholder="Enter note..."></textarea>
-                <button className="note-submit bg-green-500 py-2 px-4 mt-2 text-white">
+                    placeholder="Enter note..."
+                    onChange={(e) => {
+                        noteContext.dispatch({
+                            type: 'currentNoteDescription',
+                            value: e.target.value,
+                        });
+                    }}></textarea>
+                <button
+                    type="submit"
+                    className="note-submit bg-green-500 py-2 px-4 mt-2 text-white">
                     Add
                 </button>
             </form>

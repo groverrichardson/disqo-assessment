@@ -10,23 +10,29 @@ function App() {
     const initialState = {
         currentNoteTitle: '',
         currentNoteDescription: '',
-        notepadTitle: 'Hi there',
-        notes: [
-            {
-                noteTitle: `Grover's Note`,
-                noteDescription: `This is just a sample note.`,
-            },
-            {
-                noteTitle: `Another Note`,
-                noteDescription: `Another sample note.`,
-            },
-        ],
+        notepadTitle: `Grover's Notepad`,
+        notes: [],
     };
 
     function reducer(state, action) {
         switch (action.type) {
-            case 'Update Notepad':
+            case 'notepad':
                 return { ...state, notepadTitle: action.value };
+            case 'currentNoteTitle':
+                return { ...state, currentNoteTitle: action.value };
+            case 'currentNoteDescription':
+                return { ...state, currentNoteDescription: action.value };
+            case 'addNote':
+                return {
+                    ...state,
+                    notes: [
+                        ...state.notes,
+                        {
+                            noteTitle: action.title,
+                            noteDescription: action.description,
+                        },
+                    ],
+                };
         }
     }
 
