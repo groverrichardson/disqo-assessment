@@ -6,7 +6,7 @@ import Note from './note';
 function NotepadHero() {
     const noteContext = useContext(NoteContext);
     const notepadTitle = noteContext.state.notepadTitle;
-    console.log(noteContext);
+    const notes = noteContext.state.notes;
 
     return (
         <div className="NotepadHero flex flex-col justify-center items-between w-1/2">
@@ -42,7 +42,14 @@ function NotepadHero() {
                     Add
                 </button>
             </form>
-            <Note />
+            {notes.map((note, i) => {
+                return (
+                    <Note
+                        title={note.noteTitle}
+                        description={note.noteDescription}
+                    />
+                );
+            })}
         </div>
     );
 }

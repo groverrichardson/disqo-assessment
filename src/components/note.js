@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Note() {
+function Note(props) {
     return (
         <div className="Note flex flex-row justify-between items-start ">
             <div className="note-details-container">
                 <input
                     type="text"
                     className="note-title border-2 border-gray-300 p-2 rounded-md mt-2"
-                    placeholder="Note title"
+                    defaultValue={props.title}
                 />
                 <textarea
                     name="note-description"
@@ -15,7 +15,7 @@ function Note() {
                     cols="30"
                     rows="10"
                     className="note-description border-2 border-gray-300 p-2 rounded-md mt-2"
-                    placeholder="Note description"></textarea>
+                    defaultValue={props.description}></textarea>
             </div>
             <button className="delete bg-red-500 text-white py-2 px-3">
                 Delete

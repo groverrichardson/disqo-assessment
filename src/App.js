@@ -11,6 +11,16 @@ function App() {
         currentNoteTitle: '',
         currentNoteDescription: '',
         notepadTitle: 'Hi there',
+        notes: [
+            {
+                noteTitle: `Grover's Note`,
+                noteDescription: `This is just a sample note.`,
+            },
+            {
+                noteTitle: `Another Note`,
+                noteDescription: `Another sample note.`,
+            },
+        ],
     };
 
     function reducer(state, action) {
