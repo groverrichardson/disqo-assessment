@@ -23,7 +23,7 @@ function App() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
-        <NoteContext.Provider value={{ dispatch: dispatch, initialState }}>
+        <NoteContext.Provider value={{ dispatch: dispatch, state }}>
             <main className="App flex flex-col justify-center items-center">
                 <div className="app-container flex flex-row flex-wrap justify-start items-start">
                     <NotepadHero />

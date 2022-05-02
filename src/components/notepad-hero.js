@@ -5,7 +5,7 @@ import Note from './note';
 
 function NotepadHero() {
     const noteContext = useContext(NoteContext);
-    const notepadTitle = noteContext.initialState.notepadTitle;
+    const notepadTitle = noteContext.state.notepadTitle;
     console.log(noteContext);
 
     return (
