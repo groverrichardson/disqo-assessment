@@ -8,6 +8,15 @@ function NotepadHero() {
     const notepadTitle = noteContext.state.notepadTitle;
     const notes = noteContext.state.notes;
 
+    function addNote(e) {
+        e.preventDefault();
+        noteContext.dispatch({
+            type: 'addNote',
+            title: noteContext.state.currentNoteTitle,
+            description: noteContext.state.currentNoteDescription,
+        });
+    }
+
     console.log(noteContext.notes);
 
     return (
@@ -28,14 +37,7 @@ function NotepadHero() {
             </div>
             <form
                 className="notes-container flex flex-col justify-center items-start"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    noteContext.dispatch({
-                        type: 'addNote',
-                        title: noteContext.state.currentNoteTitle,
-                        description: noteContext.state.currentNoteDescription,
-                    });
-                }}>
+                onSubmit={(e) => addNote(e)}>
                 <h2 className="my-notes ">My Notes</h2>
                 <input
                     type="text"
