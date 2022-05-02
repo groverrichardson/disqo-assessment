@@ -16,7 +16,7 @@ function App() {
     function reducer(state, action) {
         switch (action.type) {
             case 'Update Notepad':
-                return (initialState.notepadTitle = action.value);
+                return { ...state, notepadTitle: action.value };
         }
     }
 
