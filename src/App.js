@@ -33,6 +33,12 @@ function App() {
                         },
                     ],
                 };
+            case 'deleteNote':
+                let newNotes = state.notes.splice(action.index, 1);
+                return {
+                    ...state,
+                    notes: [...newNotes],
+                };
         }
     }
 

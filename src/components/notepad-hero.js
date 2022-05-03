@@ -15,9 +15,17 @@ function NotepadHero() {
             title: noteContext.state.currentNoteTitle,
             description: noteContext.state.currentNoteDescription,
         });
-    }
 
-    console.log(noteContext.notes);
+        noteContext.dispatch({
+            type: 'currentNoteTitle',
+            value: '',
+        });
+
+        noteContext.dispatch({
+            type: 'currentNoteDescription',
+            value: '',
+        });
+    }
 
     return (
         <div className="NotepadHero flex flex-col justify-center items-between w-1/2">
@@ -43,6 +51,7 @@ function NotepadHero() {
                     type="text"
                     className="note-title border-2 border-gray-300 p-2 rounded-md mt-2"
                     placeholder="Enter note title..."
+                    value={noteContext.state.currentNoteTitle}
                     onChange={(e) => {
                         noteContext.dispatch({
                             type: 'currentNoteTitle',
@@ -57,6 +66,7 @@ function NotepadHero() {
                     rows="10"
                     className="border-2 border-gray-300 p-2 rounded-md mt-2"
                     placeholder="Enter note..."
+                    value={noteContext.state.currentNoteDescription}
                     onChange={(e) => {
                         noteContext.dispatch({
                             type: 'currentNoteDescription',
